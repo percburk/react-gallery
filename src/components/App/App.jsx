@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-import DisplayPhotoItems from '../DisplayPhotoItems/DisplayPhotoItems';
+import GalleryList from '../GalleryList/GalleryList';
 import axios from 'axios';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
-      <DisplayPhotoItems photos={photos} addLikes={addLikes} />
+      <GalleryList photos={photos} addLikes={addLikes} />
     </div>
   );
 }

@@ -1,17 +1,16 @@
-import './PhotoItem.css';
+import './GalleryItem.css';
 import { useState } from 'react';
 
-function PhotoItem({ photo, addLikes }) {
+function GalleryItem({ photo, addLikes }) {
   const [photoDisplayed, setPhotoDisplayed] = useState(true);
-
-  const toggle = () => {
-    setPhotoDisplayed(photoDisplayed === true ? false : true);
-    console.log(photoDisplayed);
-  }
 
   return (
     <div>
-      <div onClick={() => toggle()}>
+      <div
+        onClick={() =>
+          setPhotoDisplayed(photoDisplayed === true ? false : true)
+        }
+      >
         {photoDisplayed === true ? (
           <img src={photo.path} />
         ) : (
@@ -24,4 +23,4 @@ function PhotoItem({ photo, addLikes }) {
   );
 }
 
-export default PhotoItem;
+export default GalleryItem;
