@@ -11,7 +11,7 @@ function App() {
 
   const getPhotos = () => {
     axios
-      .get('/gallery')
+      .get('/gallery/')
       .then((res) => {
         console.log(res.data);
         setPhotos(res.data);
@@ -21,8 +21,11 @@ function App() {
 
   const addLikes = (id) => {
     axios
-      .put(`/gallery/${id}`)
-      .then((res) => console.log(res))
+      .put(`gallery/like/${id}`)
+      .then((res) => {
+        console.log(res);
+        getPhotos();
+      })
       .catch((err) => alert('error in put', err));
   };
 
@@ -31,8 +34,7 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
-      <DisplayPhotoItems photos={photos} addlikes={addLikes} />
-      <img src="images/goat_small.jpg" />
+      <DisplayPhotoItems photos={photos} addLikes={addLikes} />
     </div>
   );
 }
