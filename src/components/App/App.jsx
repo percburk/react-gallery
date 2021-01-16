@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
 import AddPhotoForm from '../AddPhotoForm/AddPhotoForm';
+import { Typography } from '@material-ui/core';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -55,7 +56,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="App-title">Gallery of My Life</h1>
+        <Typography variant="h4" className="App-title">
+          Gallery of My Life
+        </Typography>
       </header>
       <AddPhotoForm
         newPath={newPath}
