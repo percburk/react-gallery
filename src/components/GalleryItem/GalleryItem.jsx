@@ -7,9 +7,7 @@ function GalleryItem({ photo, addLikes }) {
   return (
     <div>
       <div
-        onClick={() =>
-          setPhotoDisplayed(photoDisplayed === true ? false : true)
-        }
+        onClick={() => setPhotoDisplayed(!photoDisplayed)}
       >
         {photoDisplayed === true ? (
           <img src={photo.path} />
