@@ -5,14 +5,12 @@ const pool = require('../modules/pool');
 
 // PUT route to add likes
 router.put('/like/:id', (req, res) => {
-  const id = req.params.id;
-
   const queryText = `
     UPDATE "photo-gallery" SET "likes" = "likes" + 1 WHERE "id" = $1;
 	`;
 
   pool
-    .query(queryText, [id])
+    .query(queryText, [req.params.id])
     .then(res.sendStatus(200))
     .catch((err) => {
       console.log(`error in PUT with ${queryText}`, err);
@@ -35,7 +33,6 @@ router.get('/', (req, res) => {
 
 // POST route to add new photo
 router.post('/', (req, res) => {
-  console.log(req.body);
   const queryText = `
     INSERT INTO "photo-gallery" ("path", "description")
     VALUES ($1, $2);
@@ -45,6 +42,16 @@ router.post('/', (req, res) => {
     .query(queryText, [req.body.path, req.body.description])
     .then(res.sendStatus(201))
     .catch((err) => console.log(`error in POST with ${queryText}`, err));
+});
+
+// DELETE route to delete photo
+router.delete('/delete/:id', (req, res) => {
+  const queryText = `DELETE FROM "photo-gallery" WHERE "id" = $1;`;
+
+  pool
+    .query(queryText, [req.params.id])
+    .then(res.sendStatus(204))
+    .catch((err) => console.log(`error in DELETE with ${queryText}`, err));
 });
 
 module.exports = router;

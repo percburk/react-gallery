@@ -31,7 +31,6 @@ function App() {
 
   const addNewPhoto = (event) => {
     event.preventDefault();
-
     axios
       .post('/gallery', { path: newPath, description: newDesc })
       .then((res) => {
@@ -44,8 +43,14 @@ function App() {
   };
 
   const deletePhoto = (id) => {
-    
-  }
+    axios
+      .delete(`/gallery/delete/${id}`)
+      .then((res) => {
+        console.log(res);
+        getPhotos();
+      })
+      .catch((err) => alert('error in delete', err));
+  };
 
   return (
     <div className="App">
@@ -59,7 +64,11 @@ function App() {
         setNewDesc={setNewDesc}
         addNewPhoto={addNewPhoto}
       />
-      <GalleryList photos={photos} addLikes={addLikes} />
+      <GalleryList
+        photos={photos}
+        addLikes={addLikes}
+        deletePhoto={deletePhoto}
+      />
     </div>
   );
 }
