@@ -9,10 +9,14 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { lightBlue, pink, grey } from '@material-ui/core/colors';
 
 function App() {
+  // photos is array of objects containing all data from db
   const [photos, setPhotos] = useState([]);
+  // set url for new photo in AddPhotoForm
   const [newPath, setNewPath] = useState('');
+  // new description of new photo in AddPhotoForm
   const [newDesc, setNewDesc] = useState('');
 
+  // theme for fonts and button colors
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -56,6 +60,7 @@ function App() {
 
   useEffect(() => getPhotos(), []);
 
+  // GET route to display photos
   const getPhotos = () => {
     axios
       .get('/gallery/')
@@ -63,6 +68,7 @@ function App() {
       .catch((err) => alert('error getting photos', err));
   };
 
+  // PUT route to add likes
   const addLikes = (id) => {
     axios
       .put(`gallery/like/${id}`)
@@ -73,6 +79,7 @@ function App() {
       .catch((err) => alert('error in put', err));
   };
 
+  // POST route to add a new photo
   const addNewPhoto = (event) => {
     event.preventDefault();
     axios
@@ -86,6 +93,7 @@ function App() {
       .catch((err) => alert('error in post', err));
   };
 
+  // DELETE route to delete a photo
   const deletePhoto = (id) => {
     axios
       .delete(`/gallery/delete/${id}`)

@@ -2,6 +2,7 @@ import './TextPhotoBackground.css';
 import { Box, Typography } from '@material-ui/core';
 
 function TextPhotoBackground({ photo }) {
+  // returns photo.description, set background image to photo with opacity
   return (
     <Box
       style={{ cursor: 'pointer' }}

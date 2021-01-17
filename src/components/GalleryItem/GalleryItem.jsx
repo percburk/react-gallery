@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 
 function GalleryItem({ photo, addLikes, deletePhoto }) {
+  // using state for the conditional rendering of photo/text, default of true
   const [photoDisplayed, setPhotoDisplayed] = useState(true);
 
   return (

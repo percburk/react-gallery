@@ -3,6 +3,7 @@ import GalleryItem from '../GalleryItem/GalleryItem';
 import { Grid } from '@material-ui/core';
 
 function GalleryList({ photos, addLikes, deletePhoto }) {
+  // loop through array of objects 'photos', display each in a component
   return (
     <Grid
       container
