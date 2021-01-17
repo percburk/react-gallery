@@ -12,11 +12,15 @@ function AddPhotoForm({
   return (
     <Box marginLeft={15}>
       <form onSubmit={addNewPhoto}>
-        <Grid container direction={'row'} spacing={3} alignItems="center">
+        <Grid
+          container
+          direction={'row'}
+          spacing={3}
+          alignItems="center"
+        >
           <Grid item>
             <TextField
               fullWidth
-              multiline
               label="Link to photo"
               variant="outlined"
               value={newPath}
@@ -26,7 +30,6 @@ function AddPhotoForm({
           <Grid item>
             <TextField
               fullWidth
-              multiLine
               label="Tell us about it"
               variant="outlined"
               value={newDesc}

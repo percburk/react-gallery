@@ -6,7 +6,7 @@ import GalleryList from '../GalleryList/GalleryList';
 import AddPhotoForm from '../AddPhotoForm/AddPhotoForm';
 import { Typography, Container, Box } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { indigo, pink, grey } from '@material-ui/core/colors';
+import { lightBlue, pink, grey } from '@material-ui/core/colors';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -16,7 +16,7 @@ function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: indigo[900],
+        main: lightBlue[500],
       },
       secondary: {
         main: pink[800],
@@ -99,8 +99,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
-        <Box display="flex" marginBottom={5} marginTop={2}>
-          <Typography variant="h2">Gallery of My Life</Typography>
+        <Box display="flex" paddingBottom={2} marginBottom={2} marginTop={2}>
+          <Typography variant="h2">Gallery of Moments</Typography>
           <AddPhotoForm
             newPath={newPath}
             setNewPath={setNewPath}

@@ -1,5 +1,7 @@
 import './GalleryItem.css';
 import { useState } from 'react';
+import Photo from '../Photo/Photo';
+import TextPhotoBackground from '../TextPhotoBackground/TextPhotoBackground';
 import { ThumbUp, Clear } from '@material-ui/icons';
 import {
   Paper,
@@ -24,20 +26,11 @@ function GalleryItem({ photo, addLikes, deletePhoto }) {
             padding={1}
             onClick={() => setPhotoDisplayed(!photoDisplayed)}
           >
-            <Box
-              style={{ cursor: 'pointer' }}
-              height="150px"
-              width="150px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              {photoDisplayed ? (
-                <img className="photo" src={photo.path} />
-              ) : (
-                <Typography variant="subtitle1">{photo.description}</Typography>
-              )}
-            </Box>
+            {photoDisplayed ? (
+              <Photo photo={photo} />
+            ) : (
+              <TextPhotoBackground photo={photo} />
+            )}
           </Box>
           <Box padding={1} textAlign="center">
             <Typography variant="body2">{photo.likes} likes</Typography>
