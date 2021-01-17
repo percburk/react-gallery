@@ -1,4 +1,5 @@
 -- database is called "react_gallery"
+-- extra test photo is in the 'images' folder to add to the DOM: cafe.jpeg
 
 CREATE TABLE "photo-gallery" (
   "id" SERIAL PRIMARY KEY,
