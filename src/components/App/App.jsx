@@ -4,9 +4,9 @@ import axios from 'axios';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
 import AddPhotoForm from '../AddPhotoForm/AddPhotoForm';
-import { Typography, Container } from '@material-ui/core';
+import { Typography, Container, Box } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { indigo, pink } from '@material-ui/core/colors';
+import { indigo, pink, grey } from '@material-ui/core/colors';
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -20,6 +20,36 @@ function App() {
       },
       secondary: {
         main: pink[800],
+      },
+    },
+    typography: {
+      fontFamily: 'Source Sans Pro',
+      fontWeight: 300,
+      fontSize: 12,
+      color: grey[700],
+      h2: {
+        fontFamily: 'Merriweather',
+        fontWeight: 300,
+        fontSize: 42,
+        letterSpacing: '0.1em',
+        color: grey[800],
+      },
+      subtitle1: {
+        fontFamily: 'Source Sans Pro',
+        fontWeight: 300,
+        fontSize: 16,
+        color: grey[700],
+      },
+      body2: {
+        fontFamily: 'Source Sans Pro',
+        fontWeight: 500,
+        fontSize: 14,
+        color: grey[700],
+      },
+      button: {
+        fontFamily: 'Source Sans Pro',
+        fontWeight: 500,
+        textTransform: 'none',
       },
     },
   });
@@ -69,12 +99,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
-        <div className="App">
-          <header className="App-header">
-            <Typography variant="h2" className="App-title">
-              Gallery of My Life
-            </Typography>
-          </header>
+        <Box display="flex" marginBottom={5} marginTop={2}>
+          <Typography variant="h2">Gallery of My Life</Typography>
           <AddPhotoForm
             newPath={newPath}
             setNewPath={setNewPath}
@@ -82,12 +108,14 @@ function App() {
             setNewDesc={setNewDesc}
             addNewPhoto={addNewPhoto}
           />
+        </Box>
+        <Box>
           <GalleryList
             photos={photos}
             addLikes={addLikes}
             deletePhoto={deletePhoto}
           />
-        </div>
+        </Box>
       </Container>
     </ThemeProvider>
   );

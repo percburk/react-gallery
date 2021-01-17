@@ -8,7 +8,6 @@ import {
   ButtonGroup,
   Box,
   IconButton,
-  Container
 } from '@material-ui/core';
 
 function GalleryItem({ photo, addLikes, deletePhoto }) {
@@ -20,24 +19,31 @@ function GalleryItem({ photo, addLikes, deletePhoto }) {
         <Box padding={2}>
           <Box
             border={1}
-            borderColor="grey.200"
             borderRadius="5%"
+            borderColor="grey.200"
             padding={1}
             onClick={() => setPhotoDisplayed(!photoDisplayed)}
           >
-            {photoDisplayed ? (
-              <img className="photo" src={photo.path} />
-            ) : (
-              <Container height="150px" width="150px">
+            <Box
+              style={{ cursor: 'pointer' }}
+              height="150px"
+              width="150px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              {photoDisplayed ? (
+                <img className="photo" src={photo.path} />
+              ) : (
                 <Typography variant="subtitle1">{photo.description}</Typography>
-              </Container>
-            )}
+              )}
+            </Box>
           </Box>
-          <Box padding={0.5}>
+          <Box padding={1} textAlign="center">
             <Typography variant="body2">{photo.likes} likes</Typography>
           </Box>
-          <Box padding={1}>
-            <ButtonGroup size="small" aria-label="small outlined button group">
+          <Box padding={1} display="flex" justifyContent="center">
+            <ButtonGroup size="small">
               <IconButton color="primary" onClick={() => addLikes(photo.id)}>
                 <ThumbUp />
               </IconButton>

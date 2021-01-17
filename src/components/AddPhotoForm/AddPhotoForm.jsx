@@ -1,5 +1,5 @@
 import './AddPhotoForm.css';
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, Grid, Box } from '@material-ui/core';
 import { ArrowForward } from '@material-ui/icons';
 
 function AddPhotoForm({
@@ -10,30 +10,41 @@ function AddPhotoForm({
   addNewPhoto,
 }) {
   return (
-    <Box margin={4}>
+    <Box marginLeft={15}>
       <form onSubmit={addNewPhoto}>
-        <TextField
-          label="Add photo"
-          variant="filled"
-          placeholder="photo url"
-          value={newPath}
-          onChange={(event) => setNewPath(event.target.value)}
-        />
-        <TextField
-          label="Tell us about it"
-          variant="filled"
-          placeholder="description"
-          value={newDesc}
-          onChange={(event) => setNewDesc(event.target.value)}
-        />
-        <Button
-          startIcon={<ArrowForward />}
-          variant="outline"
-          color="primary"
-          type="submit"
-        >
-          Add Photo
-        </Button>
+        <Grid container direction={'row'} spacing={3} alignItems="center">
+          <Grid item>
+            <TextField
+              fullWidth
+              multiline
+              label="Link to photo"
+              variant="outlined"
+              value={newPath}
+              onChange={(event) => setNewPath(event.target.value)}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              fullWidth
+              multiLine
+              label="Tell us about it"
+              variant="outlined"
+              value={newDesc}
+              onChange={(event) => setNewDesc(event.target.value)}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              size="large"
+              startIcon={<ArrowForward />}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Add Photo
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </Box>
   );
