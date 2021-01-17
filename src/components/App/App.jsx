@@ -4,12 +4,25 @@ import axios from 'axios';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList';
 import AddPhotoForm from '../AddPhotoForm/AddPhotoForm';
-import { Typography } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { indigo, pink } from '@material-ui/core/colors';
 
 function App() {
   const [photos, setPhotos] = useState([]);
   const [newPath, setNewPath] = useState('');
   const [newDesc, setNewDesc] = useState('');
+
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: indigo[900],
+      },
+      secondary: {
+        main: pink[800],
+      },
+    },
+  });
 
   useEffect(() => getPhotos(), []);
 
@@ -54,25 +67,29 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Typography variant="h4" className="App-title">
-          Gallery of My Life
-        </Typography>
-      </header>
-      <AddPhotoForm
-        newPath={newPath}
-        setNewPath={setNewPath}
-        newDesc={newDesc}
-        setNewDesc={setNewDesc}
-        addNewPhoto={addNewPhoto}
-      />
-      <GalleryList
-        photos={photos}
-        addLikes={addLikes}
-        deletePhoto={deletePhoto}
-      />
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="lg">
+        <div className="App">
+          <header className="App-header">
+            <Typography variant="h2" className="App-title">
+              Gallery of My Life
+            </Typography>
+          </header>
+          <AddPhotoForm
+            newPath={newPath}
+            setNewPath={setNewPath}
+            newDesc={newDesc}
+            setNewDesc={setNewDesc}
+            addNewPhoto={addNewPhoto}
+          />
+          <GalleryList
+            photos={photos}
+            addLikes={addLikes}
+            deletePhoto={deletePhoto}
+          />
+        </div>
+      </Container>
+    </ThemeProvider>
   );
 }
 
