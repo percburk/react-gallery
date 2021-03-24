@@ -37,8 +37,11 @@ Hooks and functional components, as opposed to Classes.
 
 ## Usage
 
-This is a photo gallery app, with the ability to add likes to photos, as well
-as click them to see a caption. New photos can also be added, as well as deleted from the database.
+1. View all the current photos in your gallery
+2. Add a new photo, using its URL
+3. Add a description and submit
+4. Add likes to the photos in your gallery
+5. Delete a photo
 
 
 ## Built With
