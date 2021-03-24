@@ -1,4 +1,4 @@
-![repo size](https://img.shields.io/github/languages/code-size/percburk/react-gallery)
+![repo size](https://img.shields.io/github/languages/code-size/percburk/react-gallery?style=flat-square)
 ![languages](https://img.shields.io/github/languages/top/percburk/react-gallery?style=flat-square)
 ![forks](https://img.shields.io/github/forks/percburk/react-gallery?style=social)
 
